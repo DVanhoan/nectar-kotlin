@@ -3,16 +3,28 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Brand;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use RealRashid\SweetAlert\Facades\Alert;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class CategoryController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $categories = Category::paginate(20);
+        $query = Category::with('products');
+
+        if ($request->filled('q')) {
+            $query->where('name', 'like', '%'.$request->q.'%');
+        }
+
+        Log::info('search request'. $request->q);
+
+        $categories   = $query->orderBy('created_at', 'desc')->paginate(20);
+
+
         return view('pages.category.index', compact('categories'));
     }
 
@@ -56,9 +68,10 @@ class CategoryController extends Controller
             'name'        => 'required|string|max:255',
             'description' => 'nullable|string',
             'image'       => 'nullable|image|max:2048',
+            'slug'        => 'nullable|string|max:255',
         ]);
 
-        $data = $request->only('name','description');
+        $data = $request->only('name','description', 'image', 'slug');
 
         if ($request->hasFile('image')) {
 

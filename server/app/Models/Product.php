@@ -9,21 +9,37 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name','description','price','stock_quantity','active','category_id'];
+    protected $fillable = [
+        'name',
+        'slug',
+        'description',
+        'price',
+        'stock_quantity',
+        'active',
+        'category_id',
+        'brand_id',
+        'volume_value',
+        'volume_unit'
+    ];
 
     public function category()
     {
         return $this->belongsTo(Category::class);
     }
 
-    public function brands()
+    public function brand()
     {
-        return $this->belongsToMany(Brand::class, 'product_brands');
+        return $this->belongsTo(Brand::class);
     }
 
     public function images()
     {
         return $this->hasMany(ProductImage::class);
+    }
+
+    public function galleryImages()
+    {
+        return $this->hasMany(ProductImage::class)->where('is_primary', false);
     }
 
     public function primaryImage()

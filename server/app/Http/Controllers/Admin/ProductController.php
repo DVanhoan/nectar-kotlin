@@ -3,32 +3,34 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreProductRequest;
-use App\Http\Requests\UpdateProductRequest;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Brand;
 use App\Models\ProductImage;
 use Illuminate\Http\Request;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
+use Illuminate\Support\Facades\Log;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ProductController extends Controller
 {
     public function index(Request $request)
     {
-        $query = Product::with('category', 'brands', 'images');
+        $query = Product::with('category', 'brand', 'images');
 
         if ($request->filled('category_id')) {
             $query->where('category_id', $request->category_id);
         }
 
         if ($request->filled('brand_id')) {
-            $query->whereHas('brands', fn($q) => $q->where('brands.id', $request->brand_id));
+            $query->where('brand_id', $request->brand_id);
         }
 
         if ($request->filled('q')) {
             $query->where('name', 'like', '%'.$request->q.'%');
         }
+
+        Log::info('search request'. $request->q);
 
         $products   = $query->orderBy('created_at', 'desc')->paginate(15);
         $categories = Category::pluck('name','id');
@@ -45,13 +47,40 @@ class ProductController extends Controller
         return view('pages.products.create', compact('categories', 'brands'));
     }
 
-    public function store(StoreProductRequest $request)
+    public function store(Request $request)
     {
-        $data = $request->validated();
+        $data = $request->validate(
+            [
+                'name' => 'required',
+                'slug' => 'required|unique:products,slug',
+                'price' => 'required',
+                'category_id' => 'required',
+                'brand_id' => 'required',
+                'stock_quantity' => 'required',
+                'description' => 'required',
+                'volume_value' => 'required',
+                'volume_unit' => 'required',
+                'image' => 'required',
+                'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg'
+            ]
+        );
+
         $product = Product::create($data);
 
-        if ($request->filled('brand_ids')) {
-            $product->brands()->sync($request->brand_ids);
+        if ($request->hasFile('image')) {
+            $upload = Cloudinary::upload($request->image->getRealPath(), [
+                'folder' => 'products/' . $product->id,
+            ]);
+
+            $url        = $upload->getSecurePath();
+            $publicId   = $upload->getPublicId();
+
+            $product->images()->create([
+                'product_id' => $product->id,
+                'url'        => $url,
+                'public_id'  => $publicId,
+                'is_primary' => true,
+            ]);
         }
 
         if ($request->hasFile('images')) {
@@ -62,18 +91,19 @@ class ProductController extends Controller
 
                 $url        = $upload->getSecurePath();
                 $publicId   = $upload->getPublicId();
-                $isPrimary  = ($request->input('is_primary') == $index); // Check index
 
                 $product->images()->create([
+                    'product_id' => $product->id,
                     'url'        => $url,
                     'public_id'  => $publicId,
-                    'is_primary' => $isPrimary,
                 ]);
             }
         }
 
+        Alert::success('Success', 'Product created successfully.');
+
         return redirect()
-            ->route('pages.products.index')
+            ->route('products.index')
             ->with('success', 'Product created successfully.');
     }
 
@@ -85,25 +115,43 @@ class ProductController extends Controller
         return view('pages.products.edit', compact('product', 'categories', 'brands'));
     }
 
-    public function update(UpdateProductRequest $request, Product $product)
+    public function update(Request $request, Product $product)
     {
-        $data = $request->validated();
+        $data = $request->validate([
+            'name' => 'required',
+            'slug' => 'required|unique:products,slug,' . $product->id,
+            'price' => 'required',
+            'category_id' => 'required',
+            'brand_id' => 'required|exists:brands,id',
+            'stock_quantity' => 'required',
+            'image' => 'nullable',
+            'description' => 'required',
+            'volume_value' => 'required',
+            'volume_unit' => 'required',
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg'
+        ]);
+
+        dd($data);
+
         $product->update($data);
-        $product->brands()->sync($request->brand_ids ?? []);
 
-        // Xoá ảnh nếu có yêu cầu
-        if ($request->filled('remove_image_ids')) {
-            $images = ProductImage::whereIn('id', $request->remove_image_ids)->get();
+        if ($request->hasFile('image')) {
+            $upload = Cloudinary::upload($request->image->getRealPath(), [
+                'folder' => 'products/' . $product->id,
+            ]);
 
-            foreach ($images as $img) {
-                if ($img->public_id) {
-                    Cloudinary::destroy($img->public_id);
-                }
-                $img->delete();
-            }
+            $url        = $upload->getSecurePath();
+            $publicId   = $upload->getPublicId();
+
+            $product->images()->create([
+                'product_id' => $product->id,
+                'url'        => $url,
+                'public_id'  => $publicId,
+                'is_primary' => true,
+            ]);
         }
 
-        // Upload ảnh mới
+
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $index => $file) {
                 $upload = Cloudinary::upload($file->getRealPath(), [
@@ -112,12 +160,12 @@ class ProductController extends Controller
 
                 $url        = $upload->getSecurePath();
                 $publicId   = $upload->getPublicId();
-                $isPrimary  = ($request->input('is_primary') == $index);
 
                 $product->images()->create([
+                    'product_id' => $product->id,
                     'url'        => $url,
                     'public_id'  => $publicId,
-                    'is_primary' => $isPrimary,
+
                 ]);
             }
         }
@@ -134,7 +182,7 @@ class ProductController extends Controller
         }
 
         return redirect()
-            ->route('pages.products.index')
+            ->route('products.index')
             ->with('success', 'Product updated successfully.');
     }
 

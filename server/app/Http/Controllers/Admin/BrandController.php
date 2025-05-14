@@ -5,14 +5,24 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Brand;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use RealRashid\SweetAlert\Facades\Alert;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class BrandController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $brands = Brand::paginate(20);
+        $query = Brand::with('products');
+
+        if ($request->filled('q')) {
+            $query->where('name', 'like', '%'.$request->q.'%');
+        }
+
+        Log::info('search request'. $request->q);
+
+        $brands   = $query->orderBy('created_at', 'desc')->paginate(20);
+
         return view('pages.brands.index', compact('brands'));
     }
 

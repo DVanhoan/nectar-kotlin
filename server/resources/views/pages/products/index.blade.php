@@ -68,11 +68,7 @@
                                 </td>
                                 <td>{{ Str::limit($product->name, 30) }}</td>
                                 <td>{{ $product->category->name }}</td>
-                                <td>
-                                    @foreach($product->brands as $brand)
-                                        <span class="badge badge-sm">{{ $brand->name }}</span>
-                                    @endforeach
-                                </td>
+                                <td>{{ $product->brand->name }}</td>
                                 <td>${{ number_format($product->price, 2) }}</td>
                                 <td>{{ $product->stock_quantity }}</td>
                                 <td>
@@ -80,18 +76,23 @@
                                     {{ $product->active ? 'Active' : 'Inactive' }}
                                 </span>
                                 </td>
-                                <td class="flex gap-2">
-                                    <a href="{{ route('products.edit', $product) }}" class="text-primary">
-                                        <i class="icon-edit-3"></i>
-                                    </a>
-                                    <form action="{{ route('products.destroy', $product) }}" method="POST"
-                                          onsubmit="return confirm('Delete this product?');">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="text-danger btn-unstyled">
-                                            <i class="icon-trash-2"></i>
-                                        </button>
-                                    </form>
+                                <td>
+                                    <div class="d-flex justify-content-start gap-4 align-items-center">
+
+                                        <a href="{{ route('products.edit', $product) }}" class="text-primary">
+                                            <i class="icon-edit"></i>
+                                        </a>
+
+                                        <form action="{{ route('products.destroy', $product) }}" method="POST" class="delete-form">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="button"
+                                                    class="btn text-danger p-0 m-0 delete-btn"
+                                                    data-id="{{ $product->id }}">
+                                                <i class="icon-trash"></i>
+                                            </button>
+                                        </form>
+                                    </div>
                                 </td>
                             </tr>
                         @empty

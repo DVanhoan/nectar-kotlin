@@ -4,6 +4,8 @@
 <script src="{{ asset('js/sweetalert.min.js') }}"></script>
 <script src="{{ asset('js/apexcharts/apexcharts.js') }}"></script>
 <script src="{{ asset('js/main.js') }}"></script>
+<script src="{{ asset('js/app.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     (function ($) {
 
