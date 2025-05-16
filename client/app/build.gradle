@@ -5,11 +5,12 @@ plugins {
 
 android {
     namespace 'com.hoan.client'
-    compileSdk 34
+    compileSdk 35
 
     defaultConfig {
+        vectorDrawables.useSupportLibrary = true
         applicationId "com.hoan.client"
-        minSdk 20
+        minSdk 21
         targetSdk 34
         versionCode 1
         versionName "1.0"
@@ -29,6 +30,11 @@ android {
     }
     kotlinOptions {
         jvmTarget = '11'
+    }
+
+
+    viewBinding {
+        enable = true
     }
 }
 

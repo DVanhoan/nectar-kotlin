@@ -2,4 +2,22 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="bg_green_light">#E2F5E9</color>
+    <color name="bg_yellow_light">#FFF6DC</color>
+    <color name="bg_pink_light">#FFE7E7</color>
+    <color name="bg_purple_light">#F4EBFF</color>
+    <color name="bg_yellow_pale">#FFFDF1</color>
+    <color name="bg_blue_pale">#E8F4FF</color>
+
+    <color name="purple_200">#BB86FC</color>
+    <color name="purple_500">#6200EE</color>
+    <color name="purple_700">#3700B3</color>
+    <color name="teal_200">#03DAC5</color>
+    <color name="teal_700">#018786</color>
+
+    <!-- Custom colors -->
+    <color name="primary_green">#4CAF50</color>
+    <color name="secondary_orange">#FF9800</color>
+    <color name="background_white">#FFFFFF</color>
+    <color name="light_gray">#FAFAFA</color>
 </resources>

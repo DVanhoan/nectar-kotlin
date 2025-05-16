@@ -13,9 +13,8 @@ class Order extends Model
 
     protected $dates = ['placed_at'];
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
+    public function customer() {
+        return $this->belongsTo(User::class,'user_id');
     }
 
     public function location()

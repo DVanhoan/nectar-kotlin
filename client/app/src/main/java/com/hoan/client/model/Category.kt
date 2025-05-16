@@ -1,4 +1,4 @@
-package com.hoan.client.models
+package com.hoan.client.model
 
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes

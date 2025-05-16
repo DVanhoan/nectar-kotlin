@@ -1,4 +1,10 @@
-package com.hoan.client.fragments
+package com.hoan.client.fragment
 
-class CartFragment {
+import androidx.fragment.app.Fragment
+
+class CartFragment : Fragment() {
+
+    companion object {
+        fun newInstance() = CartFragment()
+    }
 }

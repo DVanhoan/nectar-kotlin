@@ -1,4 +1,11 @@
-package com.hoan.client.fragments
+package com.hoan.client.fragment
 
-class FavouriteFragment {
+import androidx.fragment.app.Fragment
+
+
+class FavouriteFragment : Fragment() {
+
+    companion object {
+        fun newInstance() = FavouriteFragment()
+    }
 }

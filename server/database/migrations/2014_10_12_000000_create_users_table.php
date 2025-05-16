@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('phone_number')->nullable();
-            $table->enum('role', ['admin', 'user'])->default('user');
+            $table->enum('role', ['admin', 'customer', 'shipper'])->default('customer');
             $table->string('avatar_url')->nullable();
             $table->string('public_id')->nullable();
             $table->string('google_id')->nullable();

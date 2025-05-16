@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class UserController extends Controller
 {
@@ -13,22 +15,35 @@ class UserController extends Controller
         $users = User::paginate(20);
         return view('pages.users.index', compact('users'));
     }
-    public function show(User $user)
-    {
-        return view('pages.users.show', compact('user'));
-    }
+
     public function edit(User $user)
     {
         return view('pages.users.edit', compact('user'));
     }
+
     public function update(Request $request, User $user)
     {
-        $user->update($request->only(['name','email','phone_number','avatar_url']));
-        return redirect()->route('pages.users.index')->with('success','User updated successfully.');
+        $data = $request->only(['name', 'email', 'phone_number']);
+
+        if ($request->hasFile('avatar')) {
+            $uploadedFileUrl = Cloudinary::upload(
+                $request->file('avatar')->getRealPath(),
+                ['folder' => 'avatars']
+            )->getSecurePath();
+            $data['avatar_url'] = $uploadedFileUrl;
+        }
+
+        $user->update($data);
+
+        Alert::success('Success', 'User updated successfully.');
+
+        return redirect()->route('users.index');
     }
+
     public function destroy(User $user)
     {
         $user->delete();
-        return back()->with('success','User deleted successfully.');
+        Alert::success('Deleted', 'User deleted successfully.');
+        return back();
     }
 }

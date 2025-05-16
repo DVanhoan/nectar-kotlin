@@ -10,9 +10,18 @@ class ShipmentController extends Controller
 {
     public function index()
     {
-        $shipments = Shipment::with('order')->paginate(20);
+        $user = auth()->user();
+        $query = Shipment::with('order.customer','shipper','events');
+
+        if ($user->role === 'shipper') {
+
+            $query->where('shipper_id', $user->id);
+        }
+
+        $shipments = $query->orderBy('status')->paginate(20);
         return view('pages.shipments.index', compact('shipments'));
     }
+
     public function show(Shipment $shipment)
     {
         return view('pages.shipments.show', compact('shipment'));

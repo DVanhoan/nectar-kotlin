@@ -1,10 +1,10 @@
 <?php
 
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\CartController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\Admin\LocationController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\ProductController;
@@ -23,7 +23,7 @@ Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/register', [AuthController::class, 'registerView'])->name('register.view');
 Route::post('/register', [AuthController::class, 'register'])->name('register');
 
-Route::middleware(['auth', 'admin'])->group(function () {
+Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
         Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
@@ -35,13 +35,6 @@ Route::middleware(['auth', 'admin'])->group(function () {
         Route::put('users/{user}', [UserController::class, 'update'])->name('users.update');
         Route::delete('users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
 
-        // Locations
-        Route::get('locations', [LocationController::class, 'index'])->name('locations.index');
-        Route::get('locations/create', [LocationController::class, 'create'])->name('locations.create');
-        Route::post('locations', [LocationController::class, 'store'])->name('locations.store');
-        Route::get('locations/{location}/edit', [LocationController::class, 'edit'])->name('locations.edit');
-        Route::put('locations/{location}', [LocationController::class, 'update'])->name('locations.update');
-        Route::delete('locations/{location}', [LocationController::class, 'destroy'])->name('locations.destroy');
 
         // Categories
         Route::get('categories', [CategoryController::class, 'index'])->name('categories.index');
@@ -60,17 +53,25 @@ Route::middleware(['auth', 'admin'])->group(function () {
         Route::delete('brands/{brand}', [BrandController::class, 'destroy'])->name('brands.destroy');
 
         // Products
-        Route::get('products', [ProductController::class, 'index'])->name('products.index');
-        Route::get('products/create', [ProductController::class, 'create'])->name('products.create');
-        Route::post('products', [ProductController::class, 'store'])->name('products.store');
-        Route::get('products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
-        Route::put('products/{product}', [ProductController::class, 'update'])->name('products.update');
-        Route::delete('products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
+        Route::middleware('role:seller')->group(function () {
+            Route::prefix('products')->group(function () {
+                Route::get('/', [ProductController::class, 'index'])->name('products.index');
+                Route::get('create', [ProductController::class, 'create'])->name('products.create');
+                Route::post('/', [ProductController::class, 'store'])->name('products.store');
+                Route::get('{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
+                Route::put('{product}', [ProductController::class, 'update'])->name('products.update');
+                Route::delete('{product}', [ProductController::class, 'destroy'])->name('products.destroy');
+            });
+        });
 
-        // Orders
+
+        // Orders admin
         Route::get('orders', [OrderController::class, 'index'])->name('orders.index');
         Route::get('orders/{order}', [OrderController::class, 'show'])->name('orders.show');
-        Route::put('orders/{order}', [OrderController::class, 'update'])->name('orders.update');
+
+        // Order seller
+
+
 
         // Payment Methods
         Route::get('payment-methods', [PaymentMethodController::class, 'index'])->name('payment-methods.index');
@@ -83,6 +84,11 @@ Route::middleware(['auth', 'admin'])->group(function () {
         // Payments
         Route::get('payments', [PaymentController::class, 'index'])->name('payments.index');
         Route::get('payments/{payment}', [PaymentController::class, 'show'])->name('payments.show');
+
+
+        Route::get('carts', [CartController::class, 'index'])->name('carts.index');
+        Route::delete('cart/{cart}', [CartController::class, 'destroy'])->name('carts.delete');
+
 
         // Shipments
         Route::get('shipments', [ShipmentController::class, 'index'])->name('shipments.index');

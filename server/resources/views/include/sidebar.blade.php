@@ -40,43 +40,20 @@
                     </ul>
                 </li>
 
-                <li class="menu-item has-children">
-                    <a href="javascript:void(0);" class="menu-item-button">
-                        <div class="icon"><i class="icon-shopping-cart"></i></div>
+
+                <li class="menu-item">
+                    <a href="{{ route('categories.index') }}">
+                        <div class="icon"><i class="icon-list"></i></div>
                         <div class="text">Categories</div>
                     </a>
-                    <ul class="sub-menu">
-                        <li class="sub-menu-item">
-                            <a href="{{route('categories.create')}}" class="">
-                                <div class="text">Add Category</div>
-                            </a>
-                        </li>
-                        <li class="sub-menu-item">
-                            <a href="{{route('categories.index')}}" class="">
-                                <div class="text">Categories</div>
-                            </a>
-                        </li>
-                    </ul>
                 </li>
 
 
-                <li class="menu-item has-children">
-                    <a href="javascript:void(0);" class="menu-item-button">
-                        <div class="icon"><i class="icon-shopping-cart"></i></div>
+                <li class="menu-item">
+                    <a href="{{route('brands.index')}}" class="">
+                        <div class="icon"><i class="icon-tag"></i></div>
                         <div class="text">Brands</div>
                     </a>
-                    <ul class="sub-menu">
-                        <li class="sub-menu-item">
-                            <a href="{{route('brands.create')}}" class="">
-                                <div class="text">Add Brand</div>
-                            </a>
-                        </li>
-                        <li class="sub-menu-item">
-                            <a href="{{route('brands.index')}}" class="">
-                                <div class="text">Brands</div>
-                            </a>
-                        </li>
-                    </ul>
                 </li>
 
 

@@ -59,4 +59,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Review::class);
     }
+
+    public function shipmentsToDeliver()
+    {
+        return $this->hasMany(Shipment::class, 'shipper_id');
+    }
 }

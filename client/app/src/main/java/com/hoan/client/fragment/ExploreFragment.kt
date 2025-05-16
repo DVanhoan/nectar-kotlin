@@ -11,7 +11,7 @@ import com.hoan.client.adapter.CategoryAdapter
 import com.hoan.client.databinding.FragmentExploreBinding
 import com.hoan.client.model.Category
 
-class FragmentExplore : Fragment(R.layout.fragment_explore) {
+class ExploreFragment : Fragment(R.layout.fragment_explore) {
 
     private var _binding: FragmentExploreBinding? = null
     private val binding get() = _binding!!
@@ -37,14 +37,15 @@ class FragmentExplore : Fragment(R.layout.fragment_explore) {
         binding.rvCategories.layoutManager = GridLayoutManager(requireContext(), 2)
         binding.rvCategories.adapter = adapter
 
-        // Search bar logic (filter)
         binding.etSearch.doOnTextChanged { text, _, _, _ ->
             val filtered = if (text.isNullOrBlank()) {
                 categories
             } else {
                 categories.filter { it.title.contains(text, ignoreCase = true) }
             }
-            adapter = CategoryAdapter(filtered) { /* same click */ }
+            adapter = CategoryAdapter(filtered) {
+                Toast.makeText(requireContext(), "Clicked on ${it.title}", Toast.LENGTH_SHORT).show()
+            }
             binding.rvCategories.adapter = adapter
         }
     }
@@ -55,6 +56,6 @@ class FragmentExplore : Fragment(R.layout.fragment_explore) {
     }
 
     companion object {
-        fun newInstance() = FragmentExplore()
+        fun newInstance() = ExploreFragment()
     }
 }
