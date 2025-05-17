@@ -8,7 +8,6 @@ import android.os.Looper
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import com.hoan.client.databinding.ActivityMainBinding
 import com.hoan.client.databinding.ActivitySplashBinding
 
 class SplashActivity : AppCompatActivity() {

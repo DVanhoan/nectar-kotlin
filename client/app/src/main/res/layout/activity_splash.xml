@@ -24,7 +24,7 @@
             android:id="@+id/img_carrot"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:src="@drawable/ic_carrot"
+            android:src="@drawable/ic_carrot_white"
             android:contentDescription="@string/carrot_icon" />
 
 

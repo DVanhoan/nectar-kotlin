@@ -1,4 +1,7 @@
 package com.hoan.client.model
 
-class Banner {
-}
+data class Banner (
+    val imageRes: Int,
+    val title: String,
+    val subtitle: String
+)

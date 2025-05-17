@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">client</string>
+    <string name="app_name">nectar</string>
     <string name="carrot_icon">carrot_icon\n</string>
     <string name="shop">Shop</string>
     <string name="explore">Explore</string>
@@ -8,4 +8,8 @@
     <string name="account">Account</string>
     <string name="find_products">Find Products</string>
     <string name="search_store">Search Store</string>
+    <string name="exclusive_offer">Exclusive Offer</string>
+    <string name="see_all">See all</string>
+    <string name="best_selling">Best Selling</string>
+    <string name="location">Da Nang - Viet Nam</string>
 </resources>
