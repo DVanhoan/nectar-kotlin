@@ -1,0 +1,9 @@
+
+<resources>
+    <color name="nectar_green">#53B175</color>
+    <style name="Theme.Nectar.Splash" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@color/nectar_green</item>
+        <item name="android:navigationBarColor">@color/nectar_green</item>
+    </style>
+</resources>
