@@ -8,7 +8,7 @@
 
 
     <ImageView
-        android:id="@+id/ivBanner"
+        android:id="@+id/ivImage"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="centerCrop"
@@ -17,6 +17,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:contentDescription="@null"
-        android:src="@drawable/fruit_banner2"/>
+        android:src="@drawable/ic_banana"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -18,6 +18,7 @@ import com.hoan.client.adapter.ProductAdapter
 import com.hoan.client.databinding.FragmentShopBinding
 import com.hoan.client.model.Banner
 import com.hoan.client.model.Category
+import com.hoan.client.model.Image
 import com.hoan.client.model.Product
 
 class ShopFragment : Fragment(R.layout.fragment_shop) {
@@ -52,13 +53,25 @@ class ShopFragment : Fragment(R.layout.fragment_shop) {
         binding.bannerViewPager.setPageTransformer(transformer)
 
 
+        val imageProduct1 = listOf(
+            Image(R.drawable.ic_banana,true),
+            Image(R.drawable.fruit_banner2,false),
+            Image(R.drawable.dairy_banner3,false),
+        )
+
+        val imageProduct2 = listOf(
+            Image(R.drawable.ic_banana,false),
+            Image(R.drawable.fruit_banner2,true),
+            Image(R.drawable.dairy_banner3,false),
+        )
+
 
         val list = listOf(
-            Product(R.drawable.ic_banana, "Organic Bananas", "7pcs, Priceg", "$4.99"),
-            Product(R.drawable.fruit_banner2, "Red Apple", "1kg, Priceg", "$4.99"),
-            Product(R.drawable.dairy_banner3, "Fresh Milk", "1L, Priceg", "$4.99"),
-            Product(R.drawable.veggies_banner1, "Organic Bananas", "7pcs, Priceg", "$4.99"),
-            Product(R.drawable.fruit_banner2, "Red Apple", "1kg, Priceg", "$4.99"),
+            Product(6, imageProduct1, "Organic Bananas", "7pcs, Priceg", "$4.99"),
+            Product(7, imageProduct2, "Red Apple", "1kg, Priceg", "$4.99"),
+            Product(8, imageProduct2, "Fresh Milk", "1L, Priceg", "$4.99"),
+            Product(9, imageProduct2, "Organic Bananas", "7pcs, Priceg", "$4.99"),
+            Product(10, imageProduct2, "Red Apple", "1kg, Priceg", "$4.99"),
         )
 
         val productAdapter = ProductAdapter(list)
@@ -71,11 +84,11 @@ class ShopFragment : Fragment(R.layout.fragment_shop) {
 
 
         val selling = listOf(
-            Product(R.drawable.ic_banana, "Organic Bananas", "7pcs, Priceg", "$4.99"),
-            Product(R.drawable.fruit_banner2, "Red Apple", "1kg, Priceg", "$4.99"),
-            Product(R.drawable.dairy_banner3, "Fresh Milk", "1L, Priceg", "$4.99"),
-            Product(R.drawable.veggies_banner1, "Organic Bananas", "7pcs, Priceg", "$4.99"),
-            Product(R.drawable.fruit_banner2, "Red Apple", "1kg, Priceg", "$4.99"),
+            Product(1, imageProduct1, "Organic Bananas", "7pcs, Priceg", "$4.99"),
+            Product(2, imageProduct2, "Red Apple", "1kg, Priceg", "$4.99"),
+            Product(3, imageProduct2, "Fresh Milk", "1L, Priceg", "$4.99"),
+            Product(4, imageProduct2, "Organic Bananas", "7pcs, Priceg", "$4.99"),
+            Product(5, imageProduct2, "Red Apple", "1kg, Priceg", "$4.99"),
         )
 
 
@@ -86,8 +99,6 @@ class ShopFragment : Fragment(R.layout.fragment_shop) {
             this.adapter = sellingAdapter
             addItemDecoration(HorizontalSpaceItemDecoration(16))
         }
-
-
 
 
 
@@ -105,9 +116,9 @@ class ShopFragment : Fragment(R.layout.fragment_shop) {
         }
 
         val products = listOf(
-            Product(R.drawable.ic_beef, "Beef Bone", "7kg, Priceg", "$4.99"),
-            Product(R.drawable.ic_chicken, "Broiler Chicken", "1kg, Priceg", "$4.99"),
-            Product(R.drawable.ic_banana, "Organic Bananas", "7pcs, Priceg", "$4.99"),
+            Product(11, imageProduct1, "Beef Bone", "7kg, Priceg", "$4.99"),
+            Product(12, imageProduct1, "Broiler Chicken", "1kg, Priceg", "$4.99"),
+            Product(13, imageProduct1, "Organic Bananas", "7pcs, Priceg", "$4.99"),
         )
 
         binding.rvProducts.apply {
