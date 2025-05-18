@@ -27,6 +27,8 @@ class ExploreFragment : Fragment(R.layout.fragment_explore) {
             Category("Meat & Fish", R.drawable.img_meat, R.color.bg_pink_light),
             Category("Bakery & Snacks", R.drawable.img_bakery, R.color.bg_purple_light),
             Category("Dairy & Eggs", R.drawable.img_dairy, R.color.bg_yellow_pale),
+            Category("Beverages", R.drawable.img_beverage, R.color.bg_blue_pale),
+            Category("Dairy & Eggs", R.drawable.img_dairy, R.color.bg_yellow_pale),
             Category("Beverages", R.drawable.img_beverage, R.color.bg_blue_pale)
         )
 

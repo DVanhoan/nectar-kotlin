@@ -12,4 +12,16 @@
     <string name="see_all">See all</string>
     <string name="best_selling">Best Selling</string>
     <string name="location">Da Nang - Viet Nam</string>
+    <string name="groceries">Groceries</string>
+    <string name="product_name">Naturel Red Apple</string>
+    <string name="price_unit">1kg, Price</string>
+    <string name="quantity">12</string>
+    <string name="price">$4.99</string>
+    <string name="product_detail_title">Product Detail</string>
+    <string name="product_detail">Apples are nutritious. Apples may be good for weight loss. apples may be good for your heart. As part of a healtful and varied diet.</string>
+    <string name="nutritions">Nutritions</string>
+    <string name="volume">100gr</string>
+    <string name="review">Review</string>
+    <string name="add_to_basket">Add To Basket</string>
+    <string name="back_button">Back Button</string>
 </resources>

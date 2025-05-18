@@ -45,6 +45,9 @@
         android:clipToPadding="false"
         android:clipChildren="false" />
 
+
+
+
     <!--  Exclusive Offer  -->
     <LinearLayout
         android:id="@+id/llExclusive"
@@ -83,7 +86,7 @@
         android:background="@color/white" />
 
 
-
+    <!--  Best Selling -->
     <LinearLayout
         android:id="@+id/llSelling"
         android:layout_width="match_parent"
@@ -119,6 +122,56 @@
         android:layout_marginTop="10dp"
         android:overScrollMode="never"
         android:background="@color/white" />
+
+
+
+    <LinearLayout
+        android:id="@+id/llGroceries"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_margin="10dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/groceries"
+            android:textSize="24sp"
+            android:textColor="#181725"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/seeAllGroceries"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/see_all"
+            android:textSize="16sp"
+            android:textColor="#53B175" />
+    </LinearLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvGroceries"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:overScrollMode="never"
+        android:background="@color/white" />
+
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvProducts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:overScrollMode="never"
+        android:background="@color/white" />
+
 
 </LinearLayout>
 </ScrollView>

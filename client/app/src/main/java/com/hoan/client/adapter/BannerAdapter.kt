@@ -9,9 +9,12 @@ import com.hoan.client.model.Banner
 class BannerAdapter(
     private val items: List<Banner>
 ) : RecyclerView.Adapter<BannerAdapter.VH>() {
+
     inner class VH(val binding: ItemBannerBinding) : RecyclerView.ViewHolder(binding.root)
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         VH(ItemBannerBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+
     override fun onBindViewHolder(holder: VH, position: Int) {
         val item = items[position]
         holder.binding.ivBanner.setImageResource(item.imageRes)

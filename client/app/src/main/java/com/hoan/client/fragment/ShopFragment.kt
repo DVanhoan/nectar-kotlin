@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -12,9 +13,11 @@ import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import com.hoan.client.R
 import com.hoan.client.adapter.BannerAdapter
+import com.hoan.client.adapter.GroceryAdapter
 import com.hoan.client.adapter.ProductAdapter
 import com.hoan.client.databinding.FragmentShopBinding
 import com.hoan.client.model.Banner
+import com.hoan.client.model.Category
 import com.hoan.client.model.Product
 
 class ShopFragment : Fragment(R.layout.fragment_shop) {
@@ -84,6 +87,34 @@ class ShopFragment : Fragment(R.layout.fragment_shop) {
             addItemDecoration(HorizontalSpaceItemDecoration(16))
         }
 
+
+
+
+
+        val groceries = listOf(
+            Category("Pulses", R.drawable.ic_pulses, R.color.pulses_bg),
+            Category("Rice", R.drawable.ic_rice, R.color.rice_bg),
+        )
+
+        binding.rvGroceries.apply {
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            adapter = GroceryAdapter(groceries) {
+                Toast.makeText(context, "Clicked: ${it.title}", Toast.LENGTH_SHORT).show()
+            }
+            addItemDecoration(HorizontalSpaceItemDecoration(16))
+        }
+
+        val products = listOf(
+            Product(R.drawable.ic_beef, "Beef Bone", "7kg, Priceg", "$4.99"),
+            Product(R.drawable.ic_chicken, "Broiler Chicken", "1kg, Priceg", "$4.99"),
+            Product(R.drawable.ic_banana, "Organic Bananas", "7pcs, Priceg", "$4.99"),
+        )
+
+        binding.rvProducts.apply {
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            adapter = ProductAdapter(products)
+            addItemDecoration(HorizontalSpaceItemDecoration(16))
+        }
 
         return binding.root
     }

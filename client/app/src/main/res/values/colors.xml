@@ -20,4 +20,7 @@
     <color name="secondary_orange">#FF9800</color>
     <color name="background_white">#FFFFFF</color>
     <color name="light_gray">#FAFAFA</color>
+
+    <color name="pulses_bg">#F8A44C</color>
+    <color name="rice_bg">#53B175</color>
 </resources>

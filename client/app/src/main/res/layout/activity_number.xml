@@ -34,7 +34,7 @@
             app:layout_constraintEnd_toEndOf="parent">
 
             <ImageView
-                android:id="@+id/img_signIn"
+                android:id="@+id/img_back"
                 android:layout_width="15dp"
                 android:layout_height="20dp"
                 android:contentDescription="@null"

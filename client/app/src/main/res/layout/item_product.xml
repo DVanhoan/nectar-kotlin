@@ -62,7 +62,7 @@
                 android:layout_height="45.6dp"
                 android:background="@drawable/bg_btn_add"
                 android:contentDescription="@null"
-                android:src="@drawable/ic_add"
+                android:src="@drawable/ic_add_white"
                 android:scaleType="centerInside"/>
         </LinearLayout>
     </LinearLayout>

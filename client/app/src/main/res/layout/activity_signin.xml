@@ -80,7 +80,7 @@
                     android:paddingStart="8dp"/>
             </LinearLayout>
 
-            <!-- Underline -->
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
