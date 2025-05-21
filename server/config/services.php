@@ -42,5 +42,11 @@ return [
         'redirect' => env('FACEBOOK_REDIRECT_URI'),
     ],
 
+    'msg91' => [
+        'auth_key'    => env('MSG91_AUTH_KEY'),
+        'template_id' => env('MSG91_TEMPLATE_ID'),
+        'sender_id'   => env('MSG91_SENDER_ID'),
+    ],
+
 
 ];
