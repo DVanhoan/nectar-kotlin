@@ -19,10 +19,10 @@ class User extends Authenticatable implements JWTSubject
         'avatar_url',
         'role',
         'google_id',
-        'facebook_id'
+        'facebook_id',
     ];
 
-    protected $hidden = ['password'];
+    protected $hidden = ['password', 'google_id', 'facebook_id', 'public_id'];
 
     public function phoneVerifications()
     {

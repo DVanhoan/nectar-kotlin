@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\Exceptions\TokenInvalidException;
 
@@ -17,7 +18,6 @@ class AuthController extends Controller
             'name' => 'required',
             'email' => 'required|string|email',
             'password' => 'required|string',
-            'phone_number' => 'required|string'
         ]);
 
         try {

@@ -1,5 +1,7 @@
 package com.hoan.client
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -10,15 +12,21 @@ import com.hoan.client.fragment.CartFragment
 import com.hoan.client.fragment.ExploreFragment
 import com.hoan.client.fragment.FavouriteFragment
 import com.hoan.client.fragment.ShopFragment
+import com.hoan.client.network.RetrofitInstance
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var sharedPreferences: SharedPreferences
+    private val sharedPrefName = "user_shared_preference"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        sharedPreferences = getSharedPreferences(sharedPrefName, Context.MODE_PRIVATE)
+        RetrofitInstance.setToken(sharedPreferences.getString("access_token", "") ?: "")
 
         replaceFragment(ShopFragment.newInstance(), TAG_SHOP)
 

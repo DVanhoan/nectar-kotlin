@@ -24,4 +24,18 @@
     <string name="review">Review</string>
     <string name="add_to_basket">Add To Basket</string>
     <string name="back_button">Back Button</string>
+    <string name="loging">Loging</string>
+    <string name="login_label">Enter youre emails and password</string>
+    <string name="btn_login">Log In</string>
+    <string name="enter_email">enter email</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="singup_label">Enter your credentials to continue</string>
+    <string name="lb_username">Username</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="login">Login</string>
+    <string name="lb_email">Email</string>
+    <string name="don_t_have_an_account">Don’t have an account?</string>
+    <string name="link_singup">Singup</string>
+    <string name="enter_password">enter password</string>
 </resources>

@@ -4,16 +4,16 @@
     package="com.hoan.client">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
     <application
+        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@drawable/ic_carrot"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         tools:targetApi="31">
         <activity
             android:name=".SplashActivity"
@@ -36,6 +36,19 @@
             android:configChanges="orientation"
             android:exported="false"
             android:windowSoftInputMode="stateVisible|adjustResize" />
+
+        <activity
+            android:name=".SignUpActivity"
+            android:configChanges="orientation"
+            android:exported="false"
+            android:windowSoftInputMode="stateVisible|adjustResize" />
+
+        <activity
+            android:name=".LoginActivity"
+            android:configChanges="orientation"
+            android:exported="false"
+            android:windowSoftInputMode="stateVisible|adjustResize" />
+
     </application>
 
 </manifest>
