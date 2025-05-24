@@ -45,5 +45,13 @@
     <string name="facebook_client_token">676b1d9ddfd2900a8d2e9556e4ae61a2</string>
     <string name="continue_with_google">Continue with Google</string>
     <string name="continue_with_facebook">Continue with Facebook</string>
+    <string name="lb_filters">Filters</string>
+    <string name="ds_back">Back</string>
+    <string name="noodles_pasta"><![CDATA[Noodles & Pasta]]></string>
+    <string name="chips_crisps"><![CDATA[Chips & Crisps]]></string>
+    <string name="fast_food">Fast Food</string>
+    <string name="brand">Brand</string>
+    <string name="apply_filter">Apply Filter</string>
+    <string name="cocola">Cocola</string>
 
 </resources>

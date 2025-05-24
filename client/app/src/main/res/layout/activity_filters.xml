@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5"
+    android:padding="16dp">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingBottom="16dp">
+
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/back"
+            android:contentDescription="@string/ds_back" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/lb_filters"
+            android:textColor="#181725"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif" />
+
+
+        <View
+            android:layout_width="24dp"
+            android:layout_height="24dp" />
+    </LinearLayout>
+
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:overScrollMode="never"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Section: Categories -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Categories"
+                android:textColor="#181725"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:paddingBottom="8dp"/>
+
+            <CheckBox
+                android:id="@+id/cb_eggs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Eggs"
+                android:textSize="14sp"
+                android:textColor="#181725"
+                android:buttonTint="#53B175" />
+
+            <CheckBox
+                android:id="@+id/cb_noodles"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/noodles_pasta"
+                android:textSize="14sp"
+                android:textColor="#181725"
+                android:buttonTint="@color/gray_unchecked" />
+
+            <CheckBox
+                android:id="@+id/cb_chips"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/chips_crisps"
+                android:textSize="14sp"
+                android:textColor="#181725"
+                android:buttonTint="@color/gray_unchecked" />
+
+            <CheckBox
+                android:id="@+id/cb_fastfood"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/fast_food"
+                android:textSize="14sp"
+                android:textColor="#181725"
+                android:buttonTint="@color/gray_unchecked"
+                android:paddingBottom="16dp"/>
+
+
+            <View
+                android:layout_width="24dp"
+                android:layout_height="24dp" />
+
+
+            <!-- Section: Brand -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/brand"
+                android:textColor="#181725"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:paddingBottom="8dp"/>
+
+            <CheckBox
+                android:id="@+id/cb_individual"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Individual Collection"
+                android:textSize="14sp"
+                android:textColor="#181725"
+                android:buttonTint="@color/gray_unchecked" />
+
+            <CheckBox
+                android:id="@+id/cb_cocola"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/cocola"
+                android:textSize="14sp"
+                android:textColor="#53B175"
+                android:buttonTint="#53B175" />
+
+            <CheckBox
+                android:id="@+id/cb_ifad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ifad"
+                android:textSize="14sp"
+                android:textColor="#181725"
+                android:buttonTint="@color/gray_unchecked" />
+
+            <CheckBox
+                android:id="@+id/cb_kazi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Kazi Farmas"
+                android:textSize="14sp"
+                android:textColor="#181725"
+                android:buttonTint="@color/gray_unchecked" />
+
+        </LinearLayout>
+    </ScrollView>
+
+
+    <Button
+        android:id="@+id/btn_apply"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="@string/apply_filter"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#53B175"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/rounded_button_add_to_basket"/>
+
+</LinearLayout>

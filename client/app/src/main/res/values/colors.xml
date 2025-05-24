@@ -23,4 +23,7 @@
 
     <color name="pulses_bg">#F8A44C</color>
     <color name="rice_bg">#53B175</color>
+
+    <color name="green_checked">53B175</color>
+    <color name="gray_unchecked">B1B1B1</color>
 </resources>
