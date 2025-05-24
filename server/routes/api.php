@@ -6,6 +6,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\LocationController;
+use App\Http\Controllers\OauthController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ReviewController;
@@ -16,8 +17,10 @@ use App\Http\Controllers\OtpController;
 
 Route::prefix('v1')->group(function () {
     Route::prefix('users')->group(function () {
-        Route::post('/otp/send', [OtpController::class, 'sendOtp']);
-        Route::post('/otp/verify', [OtpController::class, 'verifyOtp']);
+        Route::post('auth/facebook', [OauthController::class, 'facebookLogin']);
+
+        Route::post('otp/send', [OtpController::class, 'sendOtp']);
+        Route::post('otp/verify', [OtpController::class, 'verifyOtp']);
         Route::post('login', [AuthController::class, 'login']);
         Route::post('register', [AuthController::class, 'register']);
         Route::post('refresh', [AuthController::class, 'refresh']);

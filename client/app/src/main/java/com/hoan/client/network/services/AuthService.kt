@@ -1,6 +1,7 @@
 package com.hoan.client.network.services
 
 import com.hoan.client.model.User
+import com.hoan.client.network.dto.FacebookLoginRequest
 import com.hoan.client.network.dto.LoginRequest
 import com.hoan.client.network.dto.LoginResponse
 import com.hoan.client.network.dto.RegisterRequest
@@ -21,4 +22,7 @@ interface AuthService {
 
     @POST("users/refresh")
     fun refreshToken(): Call<LoginResponse>
+
+    @POST("users/auth/facebook")
+    fun facebookLogin(@Body req: FacebookLoginRequest): Call<LoginResponse>
 }

@@ -67,7 +67,6 @@ class AuthController extends Controller
             $newToken = Auth::guard('api')->refresh();
 
             $expiresIn = Auth::guard('api')->factory()->getTTL() * 60;
-            $user = Auth::guard('api')->user();
 
             return response()->json([
                 'access_token' => $newToken,

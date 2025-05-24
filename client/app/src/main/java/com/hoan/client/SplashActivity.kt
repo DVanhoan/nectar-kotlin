@@ -1,6 +1,5 @@
 package com.hoan.client
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -27,7 +26,7 @@ class SplashActivity : AppCompatActivity() {
         )
 
         Handler(Looper.getMainLooper()).postDelayed({
-            intent = Intent(this, LoginActivity::class.java)
+            intent = Intent(this, SignInActivity::class.java)
             startActivity(intent)
             finish()
         }, 1500)

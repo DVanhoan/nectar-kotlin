@@ -99,34 +99,33 @@
                 />
 
 
-            <com.google.android.material.button.MaterialButton
-                style="@style/Widget.MaterialComponents.Button"
+            <Button
                 android:id="@+id/btn_google"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="16dp"
-                android:text="Continue with Google"
+                android:text="@string/continue_with_google"
                 android:textAllCaps="false"
-                app:icon="@drawable/ic_google"
-                app:iconGravity="textStart"
+                android:drawableStart="@drawable/ic_google"
+                android:drawablePadding="8dp"
                 android:background="@drawable/rounded_button_google"
-                app:iconPadding="8dp"
-                app:backgroundTint="#7F6CFF"/>
+                android:textColor="@android:color/white"
+                android:paddingStart="30dp"
+                android:paddingEnd="30dp" />
 
-
-            <com.google.android.material.button.MaterialButton
-                style="@style/Widget.MaterialComponents.Button"
+            <Button
                 android:id="@+id/btn_facebook"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="16dp"
-                android:text="Continue with Facebook"
+                android:text="@string/continue_with_facebook"
                 android:textAllCaps="false"
-                app:icon="@drawable/ic_facebook"
-                app:iconGravity="textStart"
+                android:drawableStart="@drawable/ic_facebook"
+                android:drawablePadding="8dp"
                 android:background="@drawable/rounded_button_facebook"
-                app:backgroundTint="#674FF6"/>
-
+                android:textColor="@android:color/white"
+                android:paddingStart="30dp"
+                android:paddingEnd="30dp" />
         </LinearLayout>
 
 

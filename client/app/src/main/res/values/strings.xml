@@ -1,4 +1,5 @@
 <resources>
+
     <string name="app_name">nectar</string>
     <string name="carrot_icon">carrot_icon\n</string>
     <string name="shop">Shop</string>
@@ -38,4 +39,11 @@
     <string name="don_t_have_an_account">Don’t have an account?</string>
     <string name="link_singup">Singup</string>
     <string name="enter_password">enter password</string>
+
+    <string name="facebook_app_id">24702276002706256</string>
+    <string name="fb_login_protocol_scheme">fb24702276002706256</string>
+    <string name="facebook_client_token">676b1d9ddfd2900a8d2e9556e4ae61a2</string>
+    <string name="continue_with_google">Continue with Google</string>
+    <string name="continue_with_facebook">Continue with Facebook</string>
+
 </resources>

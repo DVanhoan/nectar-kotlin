@@ -28,3 +28,7 @@ data class LoginResponse(
     @Json(name="user")
     val user: User
 )
+
+data class FacebookLoginRequest(
+    @Json(name = "access_token") val accessToken: String
+)
