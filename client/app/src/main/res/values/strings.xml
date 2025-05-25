@@ -53,5 +53,8 @@
     <string name="brand">Brand</string>
     <string name="apply_filter">Apply Filter</string>
     <string name="cocola">Cocola</string>
+    <string name="back">Back</string>
+    <string name="categories">Categories</string>
+    <string name="eggs">Eggs</string>
 
 </resources>
